@@ -7,6 +7,7 @@ if (!process.env.MONGODB_URI) {
 const uri = process.env.MONGODB_URI;
 const options = {};
 
+/** @type {MongoClient} */
 let client;
 
 if (process.env.NODE_ENV === "development") {
