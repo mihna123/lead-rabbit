@@ -1,16 +1,19 @@
 import SignInButton from "@/components/buttons/sign-in";
 import SignOutButton from "@/components/buttons/sign-out";
 import { auth } from "@/auth";
-import client from "@/lib/mongodb";
+import { redirect } from "next/navigation";
+import LeadRabbitLogo from "@/components/lead-rabbit-logo";
 
 export default async function Home() {
 	const session = await auth();
-	const users = await client.db().collection("users").find().toArray();
+	if (session?.user) {
+		redirect("/dashboard");
+	}
 	return (
 		<div>
+			<LeadRabbitLogo />
 			Helloooo {session?.user?.name?.split(" ")[0]}{" "}
 			{!session?.user ? <SignInButton /> : <SignOutButton />}
-			<p>{JSON.stringify(users)}</p>
 		</div>
 	);
 }
