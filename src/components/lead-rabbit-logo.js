@@ -3,7 +3,7 @@ import { gamjaFlower } from "@/fonts";
 
 export default function LeadRabbitLogo() {
 	return (
-		<div className={`flex items-center gap-1 text-lg ${gamjaFlower.className}`}>
+		<div className={`flex items-center text-lg ${gamjaFlower.className}`}>
 			<p className="text-xl">LeadRabbit</p>
 			<RabbitIcon />
 		</div>
