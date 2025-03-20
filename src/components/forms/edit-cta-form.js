@@ -1,31 +1,38 @@
 "use client";
 
 import { grandstander } from "@/fonts";
-import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState, useActionState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState, useActionState, useRef } from "react";
 import { submitCTA } from "@/lib/cta-actions";
-import { showMessage } from "@/lib/utils";
+import { showMessage } from "@/lib/utils/renderUtils";
 import FontsDropdown from "@/components/inputs/fonts-dropdown";
 import { LoadingIcon } from "@/components/icons";
 
-export default function EditCTAForm({ session }) {
-	const searchParams = useSearchParams();
-	const isNew = searchParams.get("new");
+export default function EditCTAForm({ session, userCtaString }) {
 	const router = useRouter();
+	const formRef = useRef(null);
+
+	/** @type {[import("../api/cta/route").CTAData, Funtion]} */
+	const [userCta, setUserCta] = useState(JSON.parse(userCtaString));
 
 	// Form fields
-	const [btnText, setBtnText] = useState("Sign up");
-	const [btnColor, setBtnColor] = useState("#0b80b7");
-	const [btnSize, setBtnSize] = useState("small");
-	const [pickedFont, setPickedFont] = useState("Roboto");
-	const [alignment, setAlignment] = useState("row");
-	const [explanation, setExplanation] = useState("");
+	const [domain, setDomain] = useState(userCta?.domain ?? "");
+	const [btnText, setBtnText] = useState(userCta?.btnText ?? "Sign up");
+	const [btnColor, setBtnColor] = useState(userCta?.btnColor ?? "#0b80b7");
+	const [btnSize, setBtnSize] = useState(userCta?.btnSize ?? "small");
+	const [pickedFont, setPickedFont] = useState(userCta?.font ?? "Roboto");
+	const [alignment, setAlignment] = useState(userCta?.alignment ?? "row");
+	const [explanation, setExplanation] = useState(userCta?.explanation ?? "");
 
 	// Because the client rerouting is slow sometimes
 	const [isLoading, setIsLoading] = useState(false);
 
 	// For submiting
 	const [formState, formAction, isPending] = useActionState(submitCTA, null);
+	const buttonSubmitHandler = () => {
+		formRef?.current?.requestSubmit();
+	};
+
 	let link = null;
 
 	// Loading the picked font
@@ -85,9 +92,9 @@ export default function EditCTAForm({ session }) {
 			className={`mt-10 p-2 rounded border w-8/12 ${grandstander.className}`}
 		>
 			<h1 className="text-3xl mb-4">
-				{isNew ? "Create your CTA" : "Edit your CTA"}
+				{!userCta ? "Create your CTA" : "Edit your CTA"}
 			</h1>
-			<form action={formAction} className="flex w-fit">
+			<form ref={formRef} action={formAction} className="flex w-full">
 				<div className="flex flex-col mr-4">
 					<label htmlFor="domain">
 						<b>Website domain</b>
@@ -97,6 +104,8 @@ export default function EditCTAForm({ session }) {
 						type="text"
 						placeholder="www.lead-rabbit.com"
 						name="domain"
+						value={domain}
+						onChange={(e) => setDomain(e.target.value)}
 					/>
 					<label htmlFor="btn-text">
 						<b>Button text</b>
@@ -132,7 +141,7 @@ export default function EditCTAForm({ session }) {
 								onChange={(e) => setBtnSize(e.target.value)}
 								type="radio"
 								value="small"
-								defaultChecked
+								checked={btnSize === "small"}
 								id="small-radio"
 								name="btn-size"
 							/>
@@ -143,6 +152,7 @@ export default function EditCTAForm({ session }) {
 								onChange={(e) => setBtnSize(e.target.value)}
 								type="radio"
 								value="medium"
+								checked={btnSize === "medium"}
 								id="medium-radio"
 								name="btn-size"
 							/>
@@ -153,6 +163,7 @@ export default function EditCTAForm({ session }) {
 								onChange={(e) => setBtnSize(e.target.value)}
 								type="radio"
 								value="large"
+								checked={btnSize === "large"}
 								id="large-radio"
 								name="btn-size"
 							/>
@@ -162,7 +173,11 @@ export default function EditCTAForm({ session }) {
 					<label htmlFor="font">
 						<b>Font</b>
 					</label>
-					<FontsDropdown name="font" setPickedFont={setPickedFont} />
+					<FontsDropdown
+						name="font"
+						initialFont={userCta?.font}
+						setPickedFont={setPickedFont}
+					/>
 				</div>
 				<div className="flex flex-col">
 					<label htmlFor="alignment">
@@ -213,19 +228,6 @@ export default function EditCTAForm({ session }) {
 							{explanation}
 						</span>
 					</div>
-					<div className="flex flex-row-reverse">
-						<button
-							type="submit"
-							className="flex justify-center items-center w-24 h-10 rounded border bg-blue-500 px-4 py-2 mt-4"
-							disabled={isPending | isLoading}
-						>
-							{isPending | isLoading ? (
-								<LoadingIcon className="animate-spin" />
-							) : (
-								"Save"
-							)}
-						</button>
-					</div>
 				</div>
 				<input
 					type="text"
@@ -235,6 +237,20 @@ export default function EditCTAForm({ session }) {
 					readOnly
 				/>
 			</form>
+			<div className="flex flex-row-reverse">
+				<button
+					type="button"
+					className="cursor-pointer flex justify-center items-center w-24 h-10 rounded border bg-blue-500 hover:bg-blue-700 px-4 py-2 mt-4"
+					disabled={isPending | isLoading}
+					onClick={buttonSubmitHandler}
+				>
+					{isPending | isLoading ? (
+						<LoadingIcon className="animate-spin" />
+					) : (
+						"Save"
+					)}
+				</button>
+			</div>
 		</div>
 	);
 }

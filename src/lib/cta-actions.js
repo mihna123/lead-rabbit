@@ -22,7 +22,7 @@ export async function submitCTA(prevState, formData) {
 			return { error: "There has been an error with the request!" };
 		}
 
-		return { success: "The CTA has been saved successfuly!" };
+		return { success: "Your CTA has been saved successfuly!" };
 	} catch (err) {
 		return { error: "There has been an error!" };
 	}

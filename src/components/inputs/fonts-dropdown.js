@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 /**
  * @typedef {Object} GoogleFont
@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
  * @property {Object} files
  * */
 
-export default function FontsDropdown({ name, setPickedFont }) {
+export default function FontsDropdown({ name, setPickedFont, initialFont }) {
 	/** @type {[GoogleFont[], Function]} */
 	const [fonts, setFonts] = useState([]);
+	const selectRef = useRef(null);
 
 	useEffect(() => {
 		fetch("/api/fonts")
@@ -20,11 +21,16 @@ export default function FontsDropdown({ name, setPickedFont }) {
 			.catch(console.error);
 	}, []);
 
+	useEffect(() => {
+		selectRef.current.value = initialFont;
+	}, [fonts]);
+
 	return (
 		<select
 			name={name}
 			onChange={(e) => setPickedFont(e.target.value)}
 			className="border rounded py-3 px-2 w-72 mb-4"
+			ref={selectRef}
 		>
 			{fonts.length > 0 ? (
 				fonts.map((f, index) => {
