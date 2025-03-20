@@ -47,3 +47,37 @@ export const ProfileIcon = (props) => (
 		/>
 	</svg>
 );
+export const LoadingIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="1em"
+		height="1em"
+		viewBox="0 0 24 24"
+		{...props}
+	>
+		<title>Loading icon</title>
+		<path
+			fill="currentColor"
+			fillOpacity=".9"
+			d="M12 2.25c-5.384 0-9.75 4.366-9.75 9.75s4.366 9.75 9.75 9.75v-2.438A7.312 7.312 0 1 1 19.313 12h2.437c0-5.384-4.366-9.75-9.75-9.75Z"
+		/>
+	</svg>
+);
+
+export const CloseIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="1em"
+		height="1em"
+		viewBox="0 0 16 16"
+		{...props}
+	>
+		<title>Close Icon</title>
+		<path
+			fill="currentColor"
+			fillRule="evenodd"
+			d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94L4.28 3.22Z"
+			clipRule="evenodd"
+		/>
+	</svg>
+);
