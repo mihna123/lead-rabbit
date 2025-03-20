@@ -1,22 +1,41 @@
 "use client";
 
 import { grandstander } from "@/fonts";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import FontsDropdown from "../inputs/fonts-dropdown";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState, useActionState } from "react";
+import { submitCTA } from "@/lib/cta-actions";
+import { showMessage } from "@/lib/utils";
+import FontsDropdown from "@/components/inputs/fonts-dropdown";
+import { LoadingIcon } from "@/components/icons";
 
-export default function EditCTAForm() {
+export default function EditCTAForm({ session }) {
 	const searchParams = useSearchParams();
 	const isNew = searchParams.get("new");
+	const router = useRouter();
 
+	// Form fields
 	const [btnText, setBtnText] = useState("Sign up");
 	const [btnColor, setBtnColor] = useState("#0b80b7");
 	const [btnSize, setBtnSize] = useState("small");
+	const [pickedFont, setPickedFont] = useState("Roboto");
+	const [alignment, setAlignment] = useState("row");
 	const [explanation, setExplanation] = useState("");
-	const [pickedFont, setPickedFont] = useState("");
 
+	// Because the client rerouting is slow sometimes
+	const [isLoading, setIsLoading] = useState(false);
+
+	// For submiting
+	const [formState, formAction, isPending] = useActionState(submitCTA, null);
+	let link = null;
+
+	// Loading the picked font
 	useEffect(() => {
-		const link = document.createElement("link");
+		if (link) {
+			link.remove();
+			link = null;
+		}
+
+		link = document.createElement("link");
 		link.href = `https://fonts.googleapis.com/css2?family=${pickedFont.replace(/ /g, "+")}`;
 		link.rel = "stylesheet";
 		document.head.appendChild(link);
@@ -25,6 +44,19 @@ export default function EditCTAForm() {
 			document.head.removeChild(link);
 		};
 	}, [pickedFont]);
+
+	// Showing message when form is sumbitted
+	useEffect(() => {
+		console.log(formState);
+		if (formState?.success) {
+			setIsLoading(true);
+			showMessage(formState.success, () => {
+				router.push("/dashboard");
+			});
+		} else if (formState?.error) {
+			showMessage(formState.error);
+		}
+	}, [formState]);
 
 	let btnDims = "h-10 px-2";
 	let btnTextSize = "text-md";
@@ -55,7 +87,7 @@ export default function EditCTAForm() {
 			<h1 className="text-3xl mb-4">
 				{isNew ? "Create your CTA" : "Edit your CTA"}
 			</h1>
-			<form className="flex w-fit">
+			<form action={formAction} className="flex w-fit">
 				<div className="flex flex-col mr-4">
 					<label htmlFor="domain">
 						<b>Website domain</b>
@@ -64,7 +96,6 @@ export default function EditCTAForm() {
 						className="border rounded py-3 px-2 w-72 mb-4"
 						type="text"
 						placeholder="www.lead-rabbit.com"
-						required
 						name="domain"
 					/>
 					<label htmlFor="btn-text">
@@ -141,6 +172,7 @@ export default function EditCTAForm() {
 						className="border rounded py-3.5 px-2 w-72 mb-4"
 						required
 						name="alignment"
+						onChange={(e) => setAlignment(e.target.value)}
 					>
 						<option value="row">Row</option>
 						<option value="column">Column</option>
@@ -154,25 +186,25 @@ export default function EditCTAForm() {
 						placeholder="This goes below the button"
 						value={explanation}
 						onChange={(e) => setExplanation(e.target.value)}
-						required
-						name="domain"
+						name="explanation"
 					/>
 					<label htmlFor="preview">
 						<b>Preview</b>
 					</label>
 					<div id="preview" className="rounded border w-fit p-8">
-						<div className="flex items-center gap-1">
+						<div
+							className={`flex ${alignment === "column" ? "flex-col" : ""} items-center gap-1`}
+						>
 							<input
 								className={`border rounded ${inputHeight} ${btnTextSize} px-2`}
 								style={{ fontFamily: pickedFont }}
 								type="email"
 								placeholder="jane@doe.com"
-								required
 							/>
 							<button
 								style={{ backgroundColor: btnColor, fontFamily: pickedFont }}
 								type="button"
-								className={`border rounded ${btnDims} hover:opacity-80 ${btnTextSize}`}
+								className={`${alignment === "column" ? "w-full" : ""} border rounded ${btnDims} hover:opacity-80 ${btnTextSize}`}
 							>
 								{btnText}
 							</button>
@@ -181,7 +213,27 @@ export default function EditCTAForm() {
 							{explanation}
 						</span>
 					</div>
+					<div className="flex flex-row-reverse">
+						<button
+							type="submit"
+							className="flex justify-center items-center w-24 h-10 rounded border bg-blue-500 px-4 py-2 mt-4"
+							disabled={isPending | isLoading}
+						>
+							{isPending | isLoading ? (
+								<LoadingIcon className="animate-spin" />
+							) : (
+								"Save"
+							)}
+						</button>
+					</div>
 				</div>
+				<input
+					type="text"
+					hidden
+					name="user-email"
+					value={session?.user?.email}
+					readOnly
+				/>
 			</form>
 		</div>
 	);
