@@ -8,6 +8,7 @@ import { useState } from "react";
  * */
 export default function ExportToCSVButton({ leads }) {
 	const [exporting, setExporting] = useState(false);
+	const buttonDisabled = !leads || leads.length === 0;
 
 	const handleButtonClick = () => {
 		setExporting(true);
@@ -30,10 +31,10 @@ export default function ExportToCSVButton({ leads }) {
 
 	return (
 		<button
-			className="border rounded w-40 h-12 bg-green-600 hover:bg-green-800 cursor-pointer"
+			className={`border rounded w-40 h-12 ${buttonDisabled ? "bg-green-800" : "bg-green-600 hover:bg-green-800 cursor-pointer"} `}
 			type="button"
 			onClick={handleButtonClick}
-			disabled={exporting}
+			disabled={exporting || buttonDisabled}
 		>
 			{exporting ? "Exporting..." : "Export to CSV"}
 		</button>
