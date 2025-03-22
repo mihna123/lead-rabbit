@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import LeadRabbitLogo from "./lead-rabbit-logo";
-import { NotificationsIcon, ProfileIcon } from "./icons";
+import { NotificationsIcon } from "./icons";
+import ProfileButton from "./buttons/profile-button";
 import FeedbackForm from "./forms/feedback-form";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({ session }) {
 	const [formShow, setFormShow] = useState(false);
 	return (
 		<div>
@@ -24,7 +25,7 @@ export default function Header() {
 						Feedback
 					</button>
 					<NotificationsIcon />
-					<ProfileIcon />
+					<ProfileButton session={session} />
 				</div>
 			</div>
 			<FeedbackForm show={formShow} setShow={setFormShow} />
