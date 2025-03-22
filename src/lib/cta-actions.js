@@ -19,11 +19,12 @@ export async function submitCTA(prevState, formData) {
 			}),
 		});
 		if (res.status !== 200) {
-			return { error: "There has been an error with the request!" };
+			const text = await res.text();
+			return { error: `There has been an error with the request: ${text}` };
 		}
 
 		return { success: "Your CTA has been saved successfuly!" };
 	} catch (err) {
-		return { error: "There has been an error!" };
+		return { error: `There has been an error!\n${err.message}` };
 	}
 }

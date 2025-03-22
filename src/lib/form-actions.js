@@ -13,11 +13,14 @@ export async function submitFeedbackForm(prevState, formData) {
 			}),
 		});
 		if (res.status !== 200) {
-			return { error: "There has been an error with the request!" };
+			const text = await res.text();
+			return { error: `There has been an error with the request: ${text}` };
 		}
 
 		return { success: "Your feedback has been sent!" };
 	} catch (err) {
-		return { error: "There has been an internal server error!" };
+		return {
+			error: `There has been an internal server error:\n${err.message}`,
+		};
 	}
 }
