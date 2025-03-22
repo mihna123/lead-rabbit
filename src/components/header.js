@@ -3,17 +3,31 @@
 import Link from "next/link";
 import LeadRabbitLogo from "./lead-rabbit-logo";
 import { NotificationsIcon, ProfileIcon } from "./icons";
+import FeedbackForm from "./forms/feedback-form";
+import { useState } from "react";
 
 export default function Header() {
+	const [formShow, setFormShow] = useState(false);
 	return (
-		<div className="flex justify-between p-3 border-b">
-			<LeadRabbitLogo />
-			<div className="flex items-center gap-6">
-				<Link href="#">My Leads</Link>
-				<Link href="#">Feedback</Link>
-				<NotificationsIcon />
-				<ProfileIcon />
+		<div>
+			<div className="flex justify-between p-3 border-b">
+				<Link href="/dashboard">
+					<LeadRabbitLogo />
+				</Link>
+				<div className="flex items-center gap-6">
+					<Link href="/leads">My Leads</Link>
+					<button
+						className="cursor-pointer"
+						type="button"
+						onClick={() => setFormShow(true)}
+					>
+						Feedback
+					</button>
+					<NotificationsIcon />
+					<ProfileIcon />
+				</div>
 			</div>
+			<FeedbackForm show={formShow} setShow={setFormShow} />
 		</div>
 	);
 }
