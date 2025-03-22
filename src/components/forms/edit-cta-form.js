@@ -13,7 +13,7 @@ export default function EditCTAForm({ session, userCtaString }) {
 	const formRef = useRef(null);
 
 	/** @type {[import("../api/cta/route").CTAData, Funtion]} */
-	const [userCta, setUserCta] = useState(JSON.parse(userCtaString));
+	const [userCta, setUserCta] = useState(null);
 
 	// Form fields
 	const [domain, setDomain] = useState(userCta?.domain ?? "");
@@ -64,6 +64,14 @@ export default function EditCTAForm({ session, userCtaString }) {
 			showMessage(formState.error);
 		}
 	}, [formState]);
+
+	useState(() => {
+		try {
+			setUserCta(JSON.parse(userCtaString));
+		} catch (e) {
+			console.error(e);
+		}
+	}, []);
 
 	let btnDims = "h-10 px-2";
 	let btnTextSize = "text-md";
