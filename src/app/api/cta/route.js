@@ -11,6 +11,7 @@ import { NextRequest } from "next/server";
  * @property {String} pickedFont
  * @property {String} alignment
  * @property {String} explanation
+ * @property {String[]} leads
  * */
 
 /**
