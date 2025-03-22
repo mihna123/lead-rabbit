@@ -144,7 +144,7 @@ export default async function DashboardPage() {
 							<br />
 							<p>{"<!-- Just before body tag add this line -->"}</p>
 							<p>
-								{`<script async defer data-lead-rabbit-token="${userCta._id}" src="${process.env.URL_BASE}/static/cta-script.js"></script>`}
+								{`<script async defer data-lead-rabbit-token="${userCta._id}" src="${process.env.URL_BASE}/cta-script.js"></script>`}
 							</p>
 						</div>
 					</div>
@@ -153,7 +153,7 @@ export default async function DashboardPage() {
 							"<!-- Add the following div tag wherewer you want your CTA to be -->\n" +
 							`<div class="lead-rabbit-cta"></div>\n\n` +
 							"<!-- Just before body tag add this line -->\n" +
-							`<script async defer data-lead-rabbit-token="${userCta._id}" src="${process.env.URL_BASE}/static/cta-script.js"></script>`
+							`<script async defer data-lead-rabbit-token="${userCta._id}" src="${process.env.URL_BASE}/cta-script.js"></script>`
 						}
 					/>
 				</div>
