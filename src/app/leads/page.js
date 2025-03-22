@@ -31,10 +31,13 @@ export default async function LeadsPage() {
 						<h1 className="text-3xl">My Leads</h1>
 						<ExportToCSVButton leads={leads} />
 					</div>
-					{leads &&
+					{leads ? (
 						leads.map((lead, index) => {
 							return <p key={index}>{lead}</p>;
-						})}
+						})
+					) : (
+						<p>You have no leads yet!</p>
+					)}
 				</div>
 			</div>
 		</div>
