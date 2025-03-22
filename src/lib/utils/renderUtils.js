@@ -32,7 +32,9 @@ export function showMessage(message, callback) {
 		messageParagraph.remove();
 		closeIcon.remove();
 		closeButton.remove();
-		callback();
+		if (callback) {
+			callback();
+		}
 	};
 
 	closeIcon.onclick = backgroundDiv.onclick;
