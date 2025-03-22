@@ -80,34 +80,39 @@ export default async function DashboardPage() {
 							</p>
 						</div>
 						<div className="w-full flex flex-col items-center">
-							<div className="h-full">
-								<div id="preview" className="rounded border w-full p-8">
-									<div
-										className={`flex ${userCta.alignment === "column" ? "flex-col" : ""} items-center gap-1`}
-									>
-										<input
-											className={`border rounded ${inputHeight} ${btnTextSize} px-2`}
-											style={{ fontFamily: userCta.font }}
-											type="email"
-											placeholder="jane@doe.com"
-										/>
-										<button
-											style={{
-												fontFamily: userCta.font,
-												backgroundColor: userCta.btnColor,
-											}}
-											type="button"
-											className={`${userCta.alignment === "column" ? "w-full" : ""}  border rounded ${btnDims} hover:opacity-80 ${btnTextSize}`}
+							<div className="h-full w-full">
+								<div
+									id="preview"
+									className="rounded border h-62 w-full flex flex-col justify-center items-center"
+								>
+									<div>
+										<div
+											className={`flex ${userCta.alignment === "column" ? "flex-col" : ""} items-center gap-1`}
 										>
-											{userCta.btnText}
-										</button>
+											<input
+												className={`border rounded ${inputHeight} ${btnTextSize} px-2`}
+												style={{ fontFamily: userCta.font }}
+												type="email"
+												placeholder="jane@doe.com"
+											/>
+											<button
+												style={{
+													fontFamily: userCta.font,
+													backgroundColor: userCta.btnColor,
+												}}
+												type="button"
+												className={`${userCta.alignment === "column" ? "w-full" : ""}  border rounded ${btnDims} hover:opacity-80 ${btnTextSize}`}
+											>
+												{userCta.btnText}
+											</button>
+										</div>
+										<span
+											style={{ fontFamily: userCta.font }}
+											className="text-xs"
+										>
+											{userCta.explanation}
+										</span>
 									</div>
-									<span
-										style={{ fontFamily: userCta.font }}
-										className="text-xs"
-									>
-										{userCta.explanation}
-									</span>
 								</div>
 								<b>Preview</b>
 								<div className="flex flex-row-reverse w-full">

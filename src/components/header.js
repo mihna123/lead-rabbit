@@ -28,7 +28,11 @@ export default function Header({ session }) {
 					<ProfileButton session={session} />
 				</div>
 			</div>
-			<FeedbackForm show={formShow} setShow={setFormShow} />
+			<FeedbackForm
+				show={formShow}
+				setShow={setFormShow}
+				email={session?.user?.email}
+			/>
 		</div>
 	);
 }

@@ -22,7 +22,7 @@ export default async function EditPage({ searchParams }) {
 		return (
 			<div>
 				<Header session={session} />
-				<div className="flex justify-center">
+				<div className="flex justify-center mb-4">
 					<EditCTAForm session={session} />
 				</div>
 			</div>

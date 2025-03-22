@@ -29,7 +29,7 @@ export default function FontsDropdown({ name, setPickedFont, initialFont }) {
 		<select
 			name={name}
 			onChange={(e) => setPickedFont(e.target.value)}
-			className="border rounded py-3 px-2 w-72 mb-4"
+			className="border rounded py-3.5 px-2 w-72 mb-4"
 			ref={selectRef}
 		>
 			{fonts.length > 0 ? (

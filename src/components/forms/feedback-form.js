@@ -4,12 +4,13 @@ import { submitFeedbackForm } from "@/lib/form-actions";
 import { useActionState, useEffect, useRef } from "react";
 import { showMessage } from "@/lib/utils/renderUtils";
 
-export default function FeedbackForm({ show, setShow }) {
+export default function FeedbackForm({ show, setShow, email }) {
 	const [formState, formAction, isPending] = useActionState(
 		submitFeedbackForm,
 		null,
 	);
 	const formRef = useRef(null);
+	const backgroundRef = useRef(null);
 
 	useEffect(() => {
 		if (formState?.success) {
@@ -21,13 +22,20 @@ export default function FeedbackForm({ show, setShow }) {
 		}
 	}, [formState]);
 
+	useEffect(() => {
+		if (show && backgroundRef.current) {
+			backgroundRef.current.style.height = `${document.documentElement.scrollHeight}px`;
+		}
+	}, [show]);
+
 	return (
 		<div>
 			{show && (
 				<div
+					ref={backgroundRef}
 					onClick={() => setShow(false)}
 					onKeyUp={() => setShow(false)}
-					className="absolute left-0 top-0 w-screen h-screen bg-gray-950/60 flex justify-center"
+					className="absolute left-0 top-0 w-screen bg-gray-950/60 flex justify-center"
 				>
 					<div
 						onClick={(e) => e.stopPropagation()}
@@ -41,6 +49,7 @@ export default function FeedbackForm({ show, setShow }) {
 								className="border rounded px-2 mb-2"
 								type="email"
 								name="email"
+								defaultValue={email ?? ""}
 								required
 							/>
 							<label htmlFor="feedback">Your feedback</label>

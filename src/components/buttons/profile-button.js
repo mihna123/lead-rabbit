@@ -49,7 +49,7 @@ export default function ProfileButton({ session }) {
 						onClick={() =>
 							showMessage(
 								`LeadRabbit is made by Mihailo Vojinović,
-                                currently a student and a web dev.\n
+                                currently a student and a web developer.\n
                                 If you want to get in touch you can send an 
                                 email to mihailonvojinovic@gmail.com`,
 							)

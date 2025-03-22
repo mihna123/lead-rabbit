@@ -42,7 +42,8 @@ export function showMessage(message, callback) {
 	closeButton.onclick = backgroundDiv.onclick;
 
 	backgroundDiv.className =
-		"w-screen h-screen absolute z-50 left-0 top-0 bg-gray-950/50 flex justify-center";
+		"w-screen absolute z-50 left-0 top-0 bg-gray-950/50 flex justify-center";
+	backgroundDiv.style.height = `${document.documentElement.scrollHeight}px`;
 
 	modalDiv.className = "bg-[var(--background)] border rounded h-fit p-4 mt-40";
 	modalDiv.onclick = (e) => {
