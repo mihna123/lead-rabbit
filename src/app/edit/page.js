@@ -15,15 +15,18 @@ export default async function EditPage({ searchParams }) {
 		`${process.env.URL_BASE}/api/cta?email=${session.user.email}`,
 		{ headers: { Authorization: `Bearer ${process.env.BIG_API_SECRET}` } },
 	);
-
-	/** @type {import("../api/cta/route").CTAData} */
-	let userCta;
-	try {
-		userCta = await res.json();
-	} catch (err) {
-		console.error(err);
+	if (res.status !== 200) {
+		return (
+			<div>
+				<Header session={session} />
+				<div className="flex justify-center">
+					<EditCTAForm session={session} />
+				</div>
+			</div>
+		);
 	}
-
+	/** @type {import("../api/cta/route").CTAData} */
+	const userCta = await res.json();
 	if (!userCta) {
 		return (
 			<div>

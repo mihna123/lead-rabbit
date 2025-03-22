@@ -18,12 +18,10 @@ export default async function DashboardPage() {
 		{ headers: { Authorization: `Bearer ${process.env.BIG_API_SECRET}` } },
 	);
 	/** @type {import("../api/cta/route").CTAData} */
-	let userCta;
-	try {
-		userCta = await res.json();
-	} catch (err) {
-		console.error(err);
+	if (res.status !== 200) {
+		redirect("/edit");
 	}
+	const userCta = await res.json();
 
 	if (!userCta) {
 		redirect("/edit");
