@@ -51,9 +51,9 @@ export default async function DashboardPage() {
 			<Header />
 			<div className="flex justify-center">
 				<div
-					className={`mt-10 p-2 rounded border w-8/12 ${grandstander.className}`}
+					className={`mt-10 p-4 rounded border w-8/12 ${grandstander.className}`}
 				>
-					<h1 className="text-3xl">Your Call To Action</h1>
+					<h1 className="text-3xl">Dashboard</h1>
 					<div className="flex my-4">
 						<div className="w-4/12">
 							<b>Website domain</b>
