@@ -38,7 +38,7 @@ export const ProfileIcon = (props) => (
 		viewBox="0 0 16 16"
 		{...props}
 	>
-		<title>Profile icon</title>
+		<title>Profile</title>
 		<path
 			fill="currentColor"
 			fillRule="evenodd"
