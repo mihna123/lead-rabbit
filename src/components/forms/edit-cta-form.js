@@ -7,13 +7,14 @@ import { submitCTA } from "@/lib/cta-actions";
 import { showMessage } from "@/lib/utils/renderUtils";
 import FontsDropdown from "@/components/inputs/fonts-dropdown";
 import { LoadingIcon } from "@/components/icons";
+import { tryParseJson } from "@/lib/utils/stringUtils";
 
 export default function EditCTAForm({ session, userCtaString }) {
 	const router = useRouter();
 	const formRef = useRef(null);
 
 	/** @type {[import("../api/cta/route").CTAData, Funtion]} */
-	const [userCta, setUserCta] = useState(null);
+	const [userCta, setUserCta] = useState(tryParseJson(userCtaString));
 
 	// Form fields
 	const [domain, setDomain] = useState(userCta?.domain ?? "");
@@ -64,14 +65,6 @@ export default function EditCTAForm({ session, userCtaString }) {
 			showMessage(formState.error);
 		}
 	}, [formState]);
-
-	useState(() => {
-		try {
-			setUserCta(JSON.parse(userCtaString));
-		} catch (e) {
-			console.error(e);
-		}
-	}, []);
 
 	let btnDims = "h-10 px-2";
 	let btnTextSize = "text-md";
