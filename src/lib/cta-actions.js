@@ -2,7 +2,7 @@
 
 export async function submitCTA(prevState, formData) {
 	try {
-		const res = await fetch("http:localhost:3000/api/cta/", {
+		const res = await fetch(`${process.env.URL_BASE}/api/cta/`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${process.env.BIG_API_SECRET}`,

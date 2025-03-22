@@ -12,7 +12,7 @@ export default async function EditPage({ searchParams }) {
 	}
 
 	const res = await fetch(
-		`http:localhost:3000/api/cta?email=${session.user.email}`,
+		`${process.env.URL_BASE}/api/cta?email=${session.user.email}`,
 		{ headers: { Authorization: `Bearer ${process.env.BIG_API_SECRET}` } },
 	);
 
