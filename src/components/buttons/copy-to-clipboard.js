@@ -16,7 +16,7 @@ export default function CopyToClipboardButton({ text }) {
 	return (
 		<button
 			onClick={onBtnPress}
-			className="border rounded w-40 h-12 bg-green-600 hover:bg-green-800"
+			className="border rounded w-40 h-12 bg-green-600 hover:bg-green-800 cursor-pointer"
 			type="button"
 		>
 			{copied ? "Copied!" : "Copy to clipboard"}
