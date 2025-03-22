@@ -23,7 +23,8 @@ export function showMessage(message, callback) {
 	buttonContainer.className = "flex justify-center mt-4";
 
 	closeButton.innerText = "Close";
-	closeButton.className = "rounded border px-3 py-2 cursor-pointer";
+	closeButton.className =
+		"rounded border px-3 py-2 cursor-pointer bg-green-600 hover:bg-green-800";
 
 	backgroundDiv.onclick = () => {
 		document.body.removeChild(backgroundDiv);
