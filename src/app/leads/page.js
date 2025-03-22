@@ -31,9 +31,10 @@ export default async function LeadsPage() {
 						<h1 className="text-3xl">My Leads</h1>
 						<ExportToCSVButton leads={leads} />
 					</div>
-					{leads.map((lead, index) => {
-						return <p key={index}>{lead}</p>;
-					})}
+					{leads &&
+						leads.map((lead, index) => {
+							return <p key={index}>{lead}</p>;
+						})}
 				</div>
 			</div>
 		</div>
