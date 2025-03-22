@@ -24,7 +24,7 @@ export default async function LeadsPage() {
 
 	return (
 		<div>
-			<Header />
+			<Header session={session} />
 			<div className="flex justify-center">
 				<div className="border rounded w-1/2 mt-10 p-4">
 					<div className="flex justify-between items-center mb-4">

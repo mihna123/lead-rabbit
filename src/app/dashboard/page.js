@@ -48,7 +48,7 @@ export default async function DashboardPage() {
 	return (
 		<div>
 			<AddFontHelper fontName={userCta.font} />
-			<Header />
+			<Header session={session} />
 			<div className="flex justify-center">
 				<div
 					className={`mt-10 p-4 rounded border w-8/12 ${grandstander.className}`}

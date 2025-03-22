@@ -21,7 +21,7 @@ export default async function EditPage({ searchParams }) {
 	if (!userCta) {
 		return (
 			<div>
-				<Header />
+				<Header session={session} />
 				<div className="flex justify-center">
 					<EditCTAForm session={session} />
 				</div>
@@ -31,7 +31,7 @@ export default async function EditPage({ searchParams }) {
 
 	return (
 		<div>
-			<Header />
+			<Header session={session} />
 			<div className="flex justify-center">
 				<EditCTAForm
 					session={session}
