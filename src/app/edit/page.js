@@ -17,7 +17,13 @@ export default async function EditPage({ searchParams }) {
 	);
 
 	/** @type {import("../api/cta/route").CTAData} */
-	const userCta = await res.json();
+	let userCta;
+	try {
+		userCta = await res.json();
+	} catch (err) {
+		console.error(err);
+	}
+
 	if (!userCta) {
 		return (
 			<div>
