@@ -16,7 +16,7 @@ import { NextRequest } from "next/server";
 
 const allowCORSHeaders = {
 	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Methods": "GET, OPTIONS",
+	"Access-Control-Allow-Methods": "GET, OPTIONS. POST",
 	"Access-Control-Allow-Headers": "Content-Type",
 };
 

@@ -63,7 +63,7 @@ function buttonClickHandler(e) {
 	errorMsg.style.opacity = "0";
 	input.style.borderColor = "";
 
-	fetch(`https://localhost:3000/api/cta/${ctaId}`, {
+	fetch(`https://www.lead-rabbit.com/api/cta/${ctaId}`, {
 		method: "POST",
 		body: JSON.stringify({
 			email: input.value,
@@ -193,7 +193,7 @@ function createCtaButton(ctaData) {
 	}
 }
 
-fetch(`http://www.lead-rabbit.com/api/cta/${ctaId}`)
+fetch(`https://www.lead-rabbit.com/api/cta/${ctaId}`)
 	.then((res) => res.json())
 	.then((data) => createCtaButton(data))
 	.catch(console.error);
