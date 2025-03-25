@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import LeadRabbitLogo from "../lead-rabbit-logo";
+import SignInButton from "../buttons/sign-in";
 
 export default function LandingHeader() {
 	const scrollToSection = (id) => {
@@ -39,9 +40,7 @@ export default function LandingHeader() {
 					FAQ
 				</button>
 			</div>{" "}
-			<Link href="#" className="btn btn-accent text-secondary-content">
-				Sign up
-			</Link>
+			<SignInButton />
 		</div>
 	);
 }

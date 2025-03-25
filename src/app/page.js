@@ -29,7 +29,10 @@ export default async function Home() {
 				<b>custom call-to-action</b>
 				<br /> and start collecting leads instantly - no coding, no headaches.
 			</p>
-			<Link href="#" className="btn btn-accent text-secondary-content mb-10">
+			<Link
+				href="/auth/signin"
+				className="btn btn-accent text-secondary-content mb-10"
+			>
 				Sign up for free!
 			</Link>
 			<UsersAvatars />
@@ -107,7 +110,7 @@ export default async function Home() {
 			</h1>
 			<p className="text-lg mb-4">Your perfect CTA is one click away!</p>
 			<Link
-				href="#"
+				href="/auth/signin"
 				className="btn btn-accent text-xl text-secondary-content mb-10"
 			>
 				Create your free CTA now!

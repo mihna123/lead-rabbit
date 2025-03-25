@@ -13,6 +13,8 @@ export default async function DashboardPage() {
 		redirect("/");
 	}
 
+	console.log(session);
+
 	const res = await fetch(
 		`${process.env.URL_BASE}/api/cta?email=${session.user.email}`,
 		{ headers: { Authorization: `Bearer ${process.env.BIG_API_SECRET}` } },
