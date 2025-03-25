@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import LeadRabbitLogo from "./lead-rabbit-logo";
-import { NotificationsIcon } from "./icons";
-import ProfileButton from "./buttons/profile-button";
-import FeedbackForm from "./forms/feedback-form";
+import LeadRabbitLogo from "@/components/lead-rabbit-logo";
+import { NotificationsIcon } from "@/components/icons";
+import ProfileButton from "@/components/buttons/profile-button";
+import FeedbackForm from "@/components/forms/feedback-form";
 import { useState } from "react";
 
 export default function Header({ session }) {

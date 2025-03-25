@@ -1,6 +1,6 @@
 "use server";
 
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import EditCTAForm from "@/components/forms/edit-cta-form";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";

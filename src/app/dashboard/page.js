@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import AddFontHelper from "@/components/helpers/add-font-helper";
 import CopyToClipbloadrButton from "@/components/buttons/copy-to-clipboard";
 import { redirect } from "next/navigation";

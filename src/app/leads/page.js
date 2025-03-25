@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/headers/header";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import ExportToCSVButton from "@/components/buttons/export-to-csv";

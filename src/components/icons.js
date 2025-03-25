@@ -81,3 +81,98 @@ export const CloseIcon = (props) => (
 		/>
 	</svg>
 );
+
+export const ArrowIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="1.5em"
+		height="1.5em"
+		viewBox="0 0 15 15"
+		{...props}
+	>
+		<title>Right arrow</title>
+		<path
+			fill="currentColor"
+			d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414Z"
+		/>
+	</svg>
+);
+
+export const CheckIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		className="size-4 me-2 inline-block text-success"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke="currentColor"
+		{...props}
+	>
+		<title>Check</title>
+		<path
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			strokeWidth="2"
+			d="M5 13l4 4L19 7"
+		/>
+	</svg>
+);
+
+export const BrushIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="7em"
+		height="7em"
+		viewBox="0 0 24 24"
+		{...props}
+	>
+		<title>Brush</title>
+		<g
+			fill="none"
+			stroke="currentColor"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			strokeWidth="2"
+		>
+			<path d="M3 21v-4a4 4 0 1 1 4 4H3" />
+			<path d="M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8" />
+			<path d="M10.6 9a9 9 0 0 1 4.4 4.4" />
+		</g>
+	</svg>
+);
+
+export const CodeIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="7em"
+		height="7em"
+		viewBox="0 0 20 20"
+		{...props}
+	>
+		<title>Code</title>
+		<g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
+			<path d="M1.59 9.331a1 1 0 0 1 1.412-.074l3.334 3a1 1 0 0 1-1.338 1.486l-3.334-3a1 1 0 0 1-.074-1.412Z" />
+			<path d="M6.41 6.331a1 1 0 0 1-.074 1.412l-3.334 3a1 1 0 1 1-1.338-1.486l3.334-3a1 1 0 0 1 1.412.074Zm12 3a1 1 0 0 1-.074 1.412l-3.334 3a1 1 0 1 1-1.338-1.486l3.334-3a1 1 0 0 1 1.412.074Z" />
+			<path d="M13.59 6.331a1 1 0 0 1 1.412-.074l3.334 3a1 1 0 0 1-1.338 1.486l-3.334-3a1 1 0 0 1-.074-1.412Zm-1.827-2.796a1 1 0 0 1 .702 1.228l-3 11a1 1 0 0 1-1.93-.526l3-11a1 1 0 0 1 1.228-.702Z" />
+		</g>
+	</svg>
+);
+
+export const CoolIcon = (props) => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="7em"
+		height="7em"
+		viewBox="0 0 24 24"
+		{...props}
+	>
+		<title>Cool dude</title>
+		<path
+			fill="currentColor"
+			d="M14.683 14.828a4.055 4.055 0 0 1-1.272.858a4.002 4.002 0 0 1-4.875-1.45l-1.658 1.119a6.063 6.063 0 0 0 1.621 1.62a5.963 5.963 0 0 0 2.148.903a6.035 6.035 0 0 0 3.542-.35a6.048 6.048 0 0 0 1.907-1.284c.272-.271.52-.571.734-.889l-1.658-1.119a4.147 4.147 0 0 1-.489.592z"
+		/>
+		<path
+			fill="currentColor"
+			d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 2c2.953 0 5.531 1.613 6.918 4H5.082C6.469 5.613 9.047 4 12 4zm0 16c-4.411 0-8-3.589-8-8c0-.691.098-1.359.264-2H5v1a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2h2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1h.736c.166.641.264 1.309.264 2c0 4.411-3.589 8-8 8z"
+		/>
+	</svg>
+);
