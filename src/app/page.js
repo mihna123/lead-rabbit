@@ -15,10 +15,13 @@ export default async function Home() {
 			<LandingHeader />
 			<CreatorAvatar className="mt-32 mb-10" />
 			<h1 className="text-7xl font-black">
-				More leads, zero{" "}
-				<span>
-					hassle
-					<span className="absolute -translate-x-96 translate-y-10 rotate-1 w-96 h-5 bg-white/10" />
+				More leads,{" "}
+				<span className="whitespace-nowrap">
+					zero{" "}
+					<span>
+						hassle
+						<span className="absolute -translate-x-96 translate-y-10 rotate-1 w-96 h-5 bg-white/10" />
+					</span>
 				</span>
 			</h1>
 			<p className="mt-4 mb-10">
@@ -39,7 +42,7 @@ export default async function Home() {
 			<h1 className="font-black text-5xl mb-10">
 				Setup your CTA in 3 easy steps
 			</h1>
-			<div className="flex items-center gap-5 mb-30">
+			<div className="flex flex-col md:flex-row items-center gap-5 md:gap-1 lg:gap-5 mb-30">
 				<StepCard
 					title="Design your CTA"
 					body="Use our editor to input your desired values"
@@ -48,7 +51,7 @@ export default async function Home() {
 					{" "}
 					<BrushIcon />
 				</StepCard>
-				<ArrowIcon />
+				<ArrowIcon className="rotate-90 md:rotate-0" />
 				<StepCard
 					title="Embed anywhere"
 					body="Add the code snippet to your website"
@@ -56,7 +59,7 @@ export default async function Home() {
 				>
 					<CodeIcon />
 				</StepCard>
-				<ArrowIcon />
+				<ArrowIcon className="rotate-90 md:rotate-0" />
 				<StepCard
 					title="Watch leads roll in"
 					body="instantly see submissions on your dashboard"
@@ -66,13 +69,19 @@ export default async function Home() {
 				</StepCard>
 			</div>
 			<StarRating
-				className="w-5/12"
-				img="/miki.jpeg"
+				className="w-10/12 md:w-8/12 lg:w-5/12"
+				img="/mihailo_cool.jpg"
 				title="creator of LeadRabbit"
 				name="Mihailo V."
-				text="LeadRabbit cut my lead-capture setup time from hours to minutes. Now, I track everything in one place!"
-			/>
-			<span className="-translate-y-32 translate-x-24 -rotate-1 w-56 h-8 bg-accent/10" />
+			>
+				<p>
+					LeadRabbit cut my lead-capture setup time from hours to minutes. Now,
+					I{" "}
+					<span className="bg-accent/45 p-1 whitespace-nowrap">
+						track everything in one place!
+					</span>
+				</p>
+			</StarRating>
 			<p id="pricing" className="text-primary/85 mb-4 mt-20 scroll-mt-20">
 				Pricing
 			</p>
@@ -82,12 +91,12 @@ export default async function Home() {
 			<p className="mb-4">
 				Join <b>17 enterpreneurs</b> that love LeadRabbit
 			</p>
-			<StarRating
-				title="Reviewer from Trustpilot"
-				name="BliNK"
-				text="It gets the job done fast."
-			/>
-			<span className="-translate-y-32 translate-x-16 rotate-1 w-24 h-8 bg-accent/10" />
+			<StarRating title="Reviewer from Trustpilot" name="BliNK">
+				<p>
+					It gets the job{" "}
+					<span className="bg-accent/45 p-1 whitespace-nowrap">done fast.</span>
+				</p>
+			</StarRating>
 
 			<h1 id="faq" className="font-black text-5xl mt-20 mb-10 scroll-mt-28">
 				Frequently Asked Questions

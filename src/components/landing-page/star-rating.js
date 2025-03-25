@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function StarRating({ name, title, img, text, className }) {
+export default function StarRating({ name, title, img, className, children }) {
 	return (
 		<div className={`flex flex-col items-center gap-4 mb-10 ${className}`}>
 			<div className="rating rating-sm">
@@ -41,7 +41,7 @@ export default function StarRating({ name, title, img, text, className }) {
 					checked
 				/>
 			</div>
-			<p className="text-lg">{text}</p>
+			<div>{children}</div>
 			<div className="flex gap-2">
 				<div className="avatar">
 					<div className="w-10 h-10 rounded-full">

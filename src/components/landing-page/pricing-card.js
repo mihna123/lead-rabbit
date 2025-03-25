@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function PricingCards({ className }) {
 	return (
-		<div className={`flex gap-20 ${className}`}>
-			<div className="card w-96 bg-base-200 shadow-base-300 shadow-md hover:scale-110 transition-transform">
+		<div className={`flex flex-col-reverse md:flex-row gap-20 ${className}`}>
+			<div className="card w-96 md:w-80 lg:w-96 bg-base-200 shadow-base-300 shadow-md hover:scale-110 transition-transform">
 				<div className="card-body">
 					<h2 className="text-3xl font-bold text-left">Free</h2>
 					<h2 className="text-6xl font-bold text-left">
@@ -46,7 +46,7 @@ export default function PricingCards({ className }) {
 					</div>
 				</div>
 			</div>
-			<div className="card w-96 bg-base-200 shadow-base-300 shadow-md hover:scale-110 transition-transform">
+			<div className="card w-96 md:w-80 lg:w-96 bg-base-200 shadow-base-300 shadow-md hover:scale-110 transition-transform">
 				<div className="card-body">
 					<h2 className="text-3xl text-primary font-bold text-left">Gold</h2>
 					<h2 className="text-6xl font-bold text-primary text-left">
